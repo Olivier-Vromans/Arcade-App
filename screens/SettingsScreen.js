@@ -1,23 +1,38 @@
-import * as React from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import { Text, View, useColorScheme } from "react-native";
-import Switch from 'expo-dark-mode-switch';
-import themes from '../src/themes.js';
+import Switch from "expo-dark-mode-switch";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-export default function Settings({ navigation }){
-    const [value, setValue] = React.useState(useColorScheme() === 'dark' ? false : true);
-    const colorScheme = value === true ? "dark" : "light"
+export default function Settings({ navigation, colorScheme, storeTheme }) {
+    const [themeColor, setThemeColor] = useState(false);
 
-    const [themeContainerStyle, themeTextStyle, themeTitleStyle] = themes(colorScheme)
+    const getTheme = async () => {
+        try {
+            const theme = await AsyncStorage.getItem('theme')
+            if (theme !== null) {
+                setThemeColor(theme === true ? 'light' : 'dark')
+            }
+        } catch (e) {
+            // error reading value
+        }
+    }
 
 
+    useEffect(() => {
+        getTheme()
+    }, [])
 
     return (
-        <View style={themeContainerStyle}>
-            <Text style={themeTitleStyle}>
-                Settings Screen!
-            </Text>
-            <Switch value={value} onChange={value => {setValue(value)}} />
+        <View style={colorScheme.themeContainerStyle}>
+            <Text style={colorScheme.themeTitleStyle}>Settings Screen!</Text>
+            <Switch
+                value={themeColor}
+                onChange={(value) => {
+                    setThemeColor(value)
+                    storeTheme(value);
+                }}
+            />
         </View>
-    )
+    );
 }

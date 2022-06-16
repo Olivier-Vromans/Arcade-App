@@ -39,7 +39,7 @@ export default function MapScreen({ navigation }) {
     if (errorMsg) {
         text = errorMsg;
     } else if (location) {
-        console.log(location);
+        // console.log(location);
         text = JSON.stringify(location);
     }
 
