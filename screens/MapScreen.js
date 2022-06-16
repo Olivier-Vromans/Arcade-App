@@ -2,7 +2,6 @@ import { StyleSheet, View, Text, Dimensions, ActivityIndicator } from "react-nat
 import MapView, { Marker } from "react-native-maps";
 import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
-import { Ionicons } from '@expo/vector-icons';
 
 
 export default function MapScreen({ navigation }) {

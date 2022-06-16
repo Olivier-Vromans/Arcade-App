@@ -5,13 +5,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export default function Settings({ navigation, colorScheme, storeTheme }) {
-    const [themeColor, setThemeColor] = useState(false);
+    const [themeColor, setThemeColor] = useState();
 
     const getTheme = async () => {
         try {
             const theme = await AsyncStorage.getItem('theme')
             if (theme !== null) {
-                setThemeColor(theme === true ? 'light' : 'dark')
+                setThemeColor(theme === 'dark' ? true : false)
             }
         } catch (e) {
             // error reading value

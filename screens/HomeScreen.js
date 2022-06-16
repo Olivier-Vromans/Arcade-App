@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, useColorScheme } from "react-native";
-import themes from "../src/themes.js";
+import {Text, View } from "react-native";
 
 
 export default function HomeScreen({ navigation, colorScheme }) {

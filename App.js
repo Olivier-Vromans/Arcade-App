@@ -13,11 +13,12 @@ import HomeScreen from './screens/HomeScreen.js';
 import ListScreen from './screens/ListScreen.js';
 import MapScreen from './screens/MapScreen.js';
 import Settings from './screens/SettingsScreen.js';
+import { useColorScheme } from 'react-native';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
 
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState();
   const [colorScheme, setColorScheme] = useState({
     mode: "dark",
     themeTextStyle: dark.ThemeText,
@@ -73,13 +74,15 @@ export default function App() {
 
   const getTheme = async () => {
     try {
-      const theme = await AsyncStorage.getItem('theme')
-      console.log(theme);
+      const item = await AsyncStorage.getItem('theme')
       if (theme !== null) {
+        setTheme(item)
         setColorScheme((currentColorScheme) => {
-          currentColorScheme.mode = theme;
+          currentColorScheme.mode = item;
           return currentColorScheme;
         })
+      }else{
+        setTheme(useColorScheme())
       }
     } catch (e) {
       // error reading value
@@ -89,17 +92,23 @@ export default function App() {
   const storeTheme = (value) => {
     const theme = value === true ? "dark" : "arcade";
     try {
-      AsyncStorage.setItem('theme', colorScheme.mode)
+      AsyncStorage.setItem('theme', theme)
       setTheme(theme);
       setColorScheme((currentColorScheme) => {
         currentColorScheme.mode = theme;
         console.log(theme);
         return currentColorScheme;
       })
+      getTheme()
     } catch (err) {
       console.log(err)
     }
   }
+
+  useEffect(() => {
+    getTheme()
+}, [])
+
 
   return (
     <NavigationContainer theme={colorScheme.navTheme}>
