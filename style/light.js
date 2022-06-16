@@ -3,17 +3,26 @@ import style from './style.js'
 
 const light = StyleSheet.create({
     ...style,
-    ThemeContainer: {
+    cntainer: {
         ...style.container,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#f2f2f2',
     },
-    ThemeTitle: {
+    title: {
         ...style.title,
         color: "#000000",
     },
-    ThemeText: {
+    text: {
         color: '#000000',
     },
+    pickerContainer: {
+        ...style.pickerContainer,
+        backgroundColor: "#000000",
+        color: "#000000"
+    },
+    pickerText: {
+        color: "#000000",
+        backgroundColor: "#f2f2f2",
+    }
 
 })
 

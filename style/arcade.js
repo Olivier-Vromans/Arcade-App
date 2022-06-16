@@ -3,17 +3,24 @@ import style from './style.js'
 
 const arcade = StyleSheet.create({
     ...style,
-    ThemeContainer: {
+    container: {
         ...style.container,
         backgroundColor: '#2b0e66',
     },
-    ThemeTitle: {
+    title: {
         ...style.title,
         color: "#00be67",
     },
-    ThemeText: {
+    text: {
         color: '#00a1d5',
     },
+    pickerContainer: {
+        ...style.pickerContainer,
+      },
+      pickerText: {
+        color: "#00a1d5",
+        backgroundColor: "#2b0e66",
+      }
 
 })
 

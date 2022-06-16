@@ -21,9 +21,11 @@ export default function App() {
   const [theme, setTheme] = useState();
   const [colorScheme, setColorScheme] = useState({
     mode: "dark",
-    themeTextStyle: dark.ThemeText,
-    themeContainerStyle: dark.ThemeContainer,
-    themeTitleStyle: dark.ThemeTitle,
+    textStyle: dark.text,
+    containerStyle: dark.container,
+    titleStyle: dark.title,
+    pickerContainerStyle: dark.pickerContainer,
+    pickerTextStyle: dark.pickerText,
     navTheme: darkMode,
     tabBarActive: '#b30000',
     tabBarinActive: '#d3d3d3',
@@ -49,23 +51,29 @@ export default function App() {
   }
 
   if (theme === 'light') {
-    colorScheme.themeTextStyle = light.ThemeText
-    colorScheme.themeContainerStyle = light.ThemeContainer
-    colorScheme.themeTitleStyle = light.ThemeTitle
+    colorScheme.textStyle = light.text
+    colorScheme.containerStyle = light.container
+    colorScheme.titleStyle = light.title
+    colorScheme.pickerContainerStyle = light.pickerContainer
+    colorScheme.pickerTextStyle = light.pickerText
     colorScheme.navTheme = DefaultTheme
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
   } else if (theme === 'dark') {
-    colorScheme.themeTextStyle = dark.ThemeText
-    colorScheme.themeContainerStyle = dark.ThemeContainer
-    colorScheme.themeTitleStyle = dark.ThemeTitle
+    colorScheme.textStyle = dark.text
+    colorScheme.containerStyle = dark.container
+    colorScheme.titleStyle = dark.title
+    colorScheme.pickerContainerStyle = dark.pickerContainer
+    colorScheme.pickerTextStyle = dark.pickerText
     colorScheme.navTheme = darkMode
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
   } else if (theme === 'arcade') {
-    colorScheme.themeTextStyle = arcade.ThemeText
-    colorScheme.themeContainerStyle = arcade.ThemeContainer
-    colorScheme.themeTitleStyle = arcade.ThemeTitle
+    colorScheme.textStyle = arcade.text
+    colorScheme.containerStyle = arcade.container
+    colorScheme.titleStyle = arcade.title
+    colorScheme.pickerContainerStyle = arcade.pickerContainer
+    colorScheme.pickerTextStyle = arcade.pickerText
     colorScheme.navTheme = arcadeMode
     colorScheme.tabBarActive = '#00BE67'
     colorScheme.tabBarinActive = '#00a1d5'
@@ -90,13 +98,11 @@ export default function App() {
   }
 
   const storeTheme = (value) => {
-    const theme = value === true ? "dark" : "arcade";
     try {
-      AsyncStorage.setItem('theme', theme)
-      setTheme(theme);
+      AsyncStorage.setItem('theme', value)
+      setTheme(value);
       setColorScheme((currentColorScheme) => {
-        currentColorScheme.mode = theme;
-        console.log(theme);
+        currentColorScheme.mode = value;
         return currentColorScheme;
       })
       getTheme()

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Text, View, useColorScheme } from "react-native";
 import Switch from "expo-dark-mode-switch";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Picker } from "@react-native-picker/picker";
 
 
 export default function Settings({ navigation, colorScheme, storeTheme }) {
@@ -11,7 +12,7 @@ export default function Settings({ navigation, colorScheme, storeTheme }) {
         try {
             const theme = await AsyncStorage.getItem('theme')
             if (theme !== null) {
-                setThemeColor(theme === 'dark' ? true : false)
+                setThemeColor(theme)
             }
         } catch (e) {
             // error reading value
@@ -23,16 +24,30 @@ export default function Settings({ navigation, colorScheme, storeTheme }) {
         getTheme()
     }, [])
 
+
+    console.log(colorScheme.pickerTextStyle)
     return (
-        <View style={colorScheme.themeContainerStyle}>
-            <Text style={colorScheme.themeTitleStyle}>Settings Screen!</Text>
-            <Switch
+        <View style={colorScheme.containerStyle}>
+            <Text style={colorScheme.titleStyle}>Settings Screen!</Text>
+            {/* <Switch
                 value={themeColor}
                 onChange={(value) => {
                     setThemeColor(value)
                     storeTheme(value);
                 }}
-            />
+            /> */}
+            <Picker
+                style={colorScheme.pickerContainerStyle}
+                selectedValue={themeColor}
+                itemStyle={colorScheme.pickerTextStyle}
+                onValueChange={(itemValue, itemIndex) =>{
+                    setThemeColor(itemValue)
+                    storeTheme(itemValue)
+                }}>
+                <Picker.Item label="Light Mode" value="light" />
+                <Picker.Item label="Dark Mode" value="dark" />
+                <Picker.Item label="Arcade Mode" value="arcade" />
+            </Picker>
         </View>
     );
 }

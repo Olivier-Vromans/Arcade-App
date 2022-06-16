@@ -3,17 +3,24 @@ import style from './style.js'
 
 const dark = StyleSheet.create({
   ...style,
-  ThemeContainer: {
+  container: {
     ...style.container,
     backgroundColor: '#1e1f26',
   },
-  ThemeTitle: {
+  title: {
     ...style.title,
     color: "#03dac6",
   },
-  ThemeText: {
+  text: {
     color: '#ffffff',
   },
+  pickerContainer: {
+    ...style.pickerContainer,
+  },
+  pickerText: {
+    color: "#ffffff",
+    backgroundColor: "#1e1f26",
+  }
 
 })
 
