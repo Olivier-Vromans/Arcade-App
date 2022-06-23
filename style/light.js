@@ -16,7 +16,11 @@ const light = StyleSheet.create({
         color: "#000000",
     },
     text: {
+        ...style.text,
         color: '#000000',
+    },
+    textInput:{
+        ...style.textInput
     },
     pickerContainer: {
         ...style.pickerContainer,

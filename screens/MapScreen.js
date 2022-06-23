@@ -27,6 +27,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
             }
         })
         if (route.params?.latitude) {
+            console.log(route.params)
             setRegion({
                 latitude: route.params.latitude,
                 longitude: route.params.longitude,

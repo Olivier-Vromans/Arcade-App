@@ -16,7 +16,11 @@ const dark = StyleSheet.create({
     color: "#03dac6",
   },
   text: {
+    ...style.text,
     color: '#ffffff',
+  },
+  textInput:{
+      ...style.textInput
   },
   pickerContainer: {
     ...style.pickerContainer,

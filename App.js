@@ -23,6 +23,7 @@ export default function App() {
   const [colorScheme, setColorScheme] = useState({
     mode: "dark",
     textStyle: dark.text,
+    textInputStyle: dark.textInput,
     containerStyle: dark.container,
     titleStyle: dark.title,
     pickerContainerStyle: dark.pickerContainer,
