@@ -4,21 +4,25 @@ import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useColorScheme } from 'react-native';
 
+//Import styles
 import arcade from "./style/arcade.js";
 import dark from "./style/dark.js";
 import light from "./style/light.js";
 
+//Import Screens
 import HomeScreen from './screens/HomeScreen.js';
 import ListScreen from './screens/ListScreen.js';
 import MapScreen from './screens/MapScreen.js';
 import Settings from './screens/SettingsScreen.js';
-import { useColorScheme } from 'react-native';
 import NoteScreen from './screens/NoteScreen.js';
 
 export default function App() {
+  //Create the tab
   const Tab = createBottomTabNavigator()
 
+  //State Variables for the theme and colorScheme
   const [theme, setTheme] = useState();
   const [colorScheme, setColorScheme] = useState({
     mode: "dark",
@@ -34,6 +38,7 @@ export default function App() {
     flatlistItemSyle: dark.flatlistItem
   })
 
+  //Variables for the theme of the Tab Navigator
   const darkMode = {
     dark: false,
     colors: {
@@ -53,6 +58,8 @@ export default function App() {
     }
   }
 
+
+  //If statement to check what theme is active and change all components to that theme
   if (theme === 'light') {
     colorScheme.textStyle = light.text
     colorScheme.containerStyle = light.container
@@ -88,7 +95,7 @@ export default function App() {
     colorScheme.StatusBar = "light"
   }
 
-
+  //Get the theme from localStorage and store it in theme and colorScheme
   const getTheme = async () => {
     try {
       const item = await AsyncStorage.getItem('theme')
@@ -106,6 +113,7 @@ export default function App() {
     }
   }
 
+  //Store the new Theme in localStorage and change the value
   const storeTheme = (value) => {
     try {
       AsyncStorage.setItem('theme', value)
@@ -126,12 +134,13 @@ export default function App() {
 
 
   return (
+    //Create the navigation
     <NavigationContainer theme={colorScheme.navTheme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
+            //If statement for right icon for right route name
             if (route.name === 'Home') {
               iconName = focused ? 'home' : 'home-outline';
             } else if (route.name === 'Map') {
