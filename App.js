@@ -62,6 +62,7 @@ export default function App() {
   //If statement to check what theme is active and change all components to that theme
   if (theme === 'light') {
     colorScheme.textStyle = light.text
+    colorScheme.textInputStyle = light.textInput,
     colorScheme.containerStyle = light.container
     colorScheme.titleStyle = light.title
     colorScheme.pickerContainerStyle = light.pickerContainer
@@ -73,6 +74,7 @@ export default function App() {
     colorScheme.StatusBar = "dark"
   } else if (theme === 'dark') {
     colorScheme.textStyle = dark.text
+    colorScheme.textInputStyle = dark.textInput,
     colorScheme.containerStyle = dark.container
     colorScheme.titleStyle = dark.title
     colorScheme.pickerContainerStyle = dark.pickerContainer
@@ -84,6 +86,7 @@ export default function App() {
     colorScheme.StatusBar = "light"
   } else if (theme === 'arcade') {
     colorScheme.textStyle = arcade.text
+    colorScheme.textInputStyle = arcade.textInput,
     colorScheme.containerStyle = arcade.container
     colorScheme.titleStyle = arcade.title
     colorScheme.pickerContainerStyle = arcade.pickerContainer

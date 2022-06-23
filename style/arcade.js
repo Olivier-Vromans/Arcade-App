@@ -20,7 +20,8 @@ const arcade = StyleSheet.create({
         color: '#00a1d5',
     },
     textInput:{
-        ...style.textInput
+        ...style.textInput,
+        color: '#00a1d5',
     },
     pickerContainer: {
         ...style.pickerContainer,

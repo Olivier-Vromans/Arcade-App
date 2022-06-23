@@ -20,7 +20,8 @@ const light = StyleSheet.create({
         color: '#000000',
     },
     textInput:{
-        ...style.textInput
+        ...style.textInput,
+        color: "#000000",
     },
     pickerContainer: {
         ...style.pickerContainer,
