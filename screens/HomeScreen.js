@@ -4,10 +4,7 @@ import { Text, View } from "react-native";
 
 
 export default function HomeScreen({ navigation, colorScheme }) {
-
-
-    const [selectedLanguage, setSelectedLanguage] = useState();
-
+    // Not much to see here hahah
     return (
         <View style={colorScheme.containerStyle}>
             <Text style={colorScheme.titleStyle}>

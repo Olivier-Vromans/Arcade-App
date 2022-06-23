@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 
 
 export default function MapScreen({ navigation, route, colorScheme }) {
+    // State variables
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [hotspots, setHotspots] = useState([{}])
@@ -15,6 +16,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
         longitudeDelta: 0.0421
     })
 
+    // eventlistener for when the tab is pressed than set the location back to current location
     useEffect(() => {
         navigation.addListener('tabPress', (e) => {
             if (location) {
@@ -26,6 +28,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
                 })
             }
         })
+        //If statement when region is given by route than show that
         if (route.params?.latitude) {
             console.log(route.params)
             setRegion({
@@ -35,6 +38,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
                 longitudeDelta: 0.0421
             })
         }
+        // Else if location is given than go to current location
         else if (location) {
             setRegion({
                 latitude: location.coords.latitude,
@@ -49,6 +53,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
 
     useEffect(() => {
         (async () => {
+            // Ask permission to get the location
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 setErrorMsg('Permission to access location was denied');
@@ -64,11 +69,11 @@ export default function MapScreen({ navigation, route, colorScheme }) {
     if (errorMsg) {
         text = errorMsg;
     } else if (location) {
-        // console.log(location);
         text = JSON.stringify(location);
     }
 
     useEffect(() => {
+        // Fetch for the hotspots and put them in hotspots
         const fetchHotspots = async () => {
             try {
                 await fetch("https://stud.hosted.hr.nl/1017098/webservice/arcades.json")
@@ -87,6 +92,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
         fetchHotspots()
     }, [])
 
+    // Create a marker for each hotspot with title, description and custom image
     const markers = hotspots.map((hotspot, index) => {
         return (
             <Marker
@@ -105,6 +111,7 @@ export default function MapScreen({ navigation, route, colorScheme }) {
 
     return (
         <View style={colorScheme.containerStyle}>
+            {/* Map componenets */}
             <MapView
                 style={{
                     width: Dimensions.get('window').width,
@@ -114,10 +121,9 @@ export default function MapScreen({ navigation, route, colorScheme }) {
                 mapType="standard"
                 region={region}
             >
+                {/* load the markers in */}
                 {markers}
             </MapView>
-            <Text style={{ zIndex: 2 }}>Back to Current Location</Text>
-            <Text>{text}</Text>
         </View>
     )
 }

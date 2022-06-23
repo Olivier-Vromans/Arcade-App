@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Text, View} from "react-native";
+import { Text, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Picker } from "@react-native-picker/picker";
 
 
 export default function Settings({ navigation, colorScheme, storeTheme }) {
+    // State variables
     const [themeColor, setThemeColor] = useState();
 
+    // Get the theme from the LocalStorage
     const getTheme = async () => {
         try {
             const theme = await AsyncStorage.getItem('theme')
@@ -18,7 +20,7 @@ export default function Settings({ navigation, colorScheme, storeTheme }) {
         }
     }
 
-
+    // Use Effect to render the theme
     useEffect(() => {
         getTheme()
     }, [])
@@ -26,11 +28,12 @@ export default function Settings({ navigation, colorScheme, storeTheme }) {
     return (
         <View style={colorScheme.containerStyle}>
             <Text style={colorScheme.titleStyle}>Settings Screen!</Text>
+            {/* Picker to choose your theme */}
             <Picker
                 style={colorScheme.pickerContainerStyle}
                 selectedValue={themeColor}
                 itemStyle={colorScheme.pickerTextStyle}
-                onValueChange={(itemValue, itemIndex) =>{
+                onValueChange={(itemValue, itemIndex) => {
                     setThemeColor(itemValue)
                     storeTheme(itemValue)
                 }}>
