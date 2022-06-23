@@ -6,6 +6,11 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  flatlistItem:{
+    marginTop: 24,
+    padding: 30,
+    fontSize:24
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",

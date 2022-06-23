@@ -4,22 +4,47 @@ import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 
 
-export default function MapScreen({ navigation }) {
-    const [loading, setLoading] = useState(true)
+export default function MapScreen({ navigation, route, colorScheme }) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [hotspots, setHotspots] = useState([{
-        "name": "Lightning VR Delft",
-        "latitude": 52.00327814152153,
-        "longitude": 4.3935949202396545,
-        "website": "http://www.lightningvr.com/"
-    },
-    {
-        "name": "Poing",
-        "latitude": 51.93046117139433,
-        "longitude": 4.475247463744682,
-        "website": "https://poing-arcade.nl/"
-    }])
+    const [hotspots, setHotspots] = useState([{}])
+    const [region, setRegion] = useState({
+        latitude: 51.916900,
+        longitude: 4.478560,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421
+    })
+
+    useEffect(() => {
+        navigation.addListener('tabPress', (e) => {
+            if (location) {
+                setRegion({
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421
+                })
+            }
+        })
+        if (route.params?.latitude) {
+            setRegion({
+                latitude: route.params.latitude,
+                longitude: route.params.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+            })
+        }
+        else if (location) {
+            setRegion({
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+            })
+        }
+    }, [location, route.params?.latitude, route])
+
+
 
     useEffect(() => {
         (async () => {
@@ -53,7 +78,6 @@ export default function MapScreen({ navigation }) {
                             arr.push(result)
                         }
                         setHotspots(arr)
-                        setLoading(false)
                     })
             } catch (err) {
                 console.log(err)
@@ -70,41 +94,29 @@ export default function MapScreen({ navigation }) {
                 title={hotspot.name}
                 description={hotspot.website}
                 image={require("../assets/marker.png")}
+                onPress={() => navigation.navigate("Notes", {
+                    hotspot: hotspot
+                })
+                }
             />
         )
     })
 
     return (
-        <View style={styles.container}>
+        <View style={colorScheme.containerStyle}>
             <MapView
-                style={styles.map}
+                style={{
+                    width: Dimensions.get('window').width,
+                    height: Dimensions.get('window').height,
+                }}
                 showsUserLocation
                 mapType="standard"
-                region={
-                    {
-                        latitude: location ? location.coords.latitude : 51.916900,
-                        longitude: location ? location.coords.longitude : 4.478560,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421
-                    }
-                }
+                region={region}
             >
                 {markers}
             </MapView>
+            <Text style={{ zIndex: 2 }}>Back to Current Location</Text>
             <Text>{text}</Text>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-    },
-});

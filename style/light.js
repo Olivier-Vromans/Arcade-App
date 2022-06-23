@@ -7,6 +7,10 @@ const light = StyleSheet.create({
         ...style.container,
         backgroundColor: '#f2f2f2',
     },
+    flatlistItem:{
+        ...style.flatlistItem,
+        backgroundColor: "#d9d9d9"
+    },
     title: {
         ...style.title,
         color: "#000000",

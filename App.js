@@ -14,6 +14,7 @@ import ListScreen from './screens/ListScreen.js';
 import MapScreen from './screens/MapScreen.js';
 import Settings from './screens/SettingsScreen.js';
 import { useColorScheme } from 'react-native';
+import NoteScreen from './screens/NoteScreen.js';
 
 export default function App() {
   const Tab = createBottomTabNavigator()
@@ -29,6 +30,7 @@ export default function App() {
     navTheme: darkMode,
     tabBarActive: '#b30000',
     tabBarinActive: '#d3d3d3',
+    flatlistItemSyle: dark.flatlistItem
   })
 
   const darkMode = {
@@ -59,6 +61,8 @@ export default function App() {
     colorScheme.navTheme = DefaultTheme
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
+    colorScheme.flatlistItemSyle = light.flatlistItem
+    colorScheme.StatusBar = "dark"
   } else if (theme === 'dark') {
     colorScheme.textStyle = dark.text
     colorScheme.containerStyle = dark.container
@@ -68,6 +72,8 @@ export default function App() {
     colorScheme.navTheme = darkMode
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
+    colorScheme.flatlistItemSyle = dark.flatlistItem
+    colorScheme.StatusBar = "light"
   } else if (theme === 'arcade') {
     colorScheme.textStyle = arcade.text
     colorScheme.containerStyle = arcade.container
@@ -77,6 +83,8 @@ export default function App() {
     colorScheme.navTheme = arcadeMode
     colorScheme.tabBarActive = '#00BE67'
     colorScheme.tabBarinActive = '#00a1d5'
+    colorScheme.flatlistItemSyle = arcade.flatlistItem
+    colorScheme.StatusBar = "light"
   }
 
 
@@ -131,6 +139,9 @@ export default function App() {
             else if (route.name === 'List') {
               iconName = focused ? 'list' : 'list-outline';
             }
+            else if (route.name === 'Notes') {
+              iconName = focused ? 'document' : 'document-outline';
+            }
             else if (route.name === 'Settings') {
               iconName = focused ? 'cog' : 'cog-outline'
             }
@@ -147,15 +158,19 @@ export default function App() {
         </Tab.Screen>
         <Tab.Screen name='Map'>
           {(props) => <MapScreen {...props} colorScheme={colorScheme} storeTheme={storeTheme} />}
+          
         </Tab.Screen>
         <Tab.Screen name='List'>
           {(props) => <ListScreen {...props} colorScheme={colorScheme} storeTheme={storeTheme} />}
+        </Tab.Screen>
+        <Tab.Screen name="Notes">
+          {(props) => <NoteScreen {...props} colorScheme={colorScheme} storeTheme={storeTheme} />}
         </Tab.Screen>
         <Tab.Screen name='Settings'>
           {(props) => <Settings {...props} colorScheme={colorScheme} storeTheme={storeTheme} />}
         </Tab.Screen>
       </Tab.Navigator>
-      <StatusBar />
+      <StatusBar style={colorScheme.StatusBar}/>
     </NavigationContainer>
   );
 }

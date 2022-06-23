@@ -7,6 +7,10 @@ const arcade = StyleSheet.create({
         ...style.container,
         backgroundColor: '#2b0e66',
     },
+    flatlistItem:{
+        ...style.flatlistItem,
+        backgroundColor: "#f500bd"
+    },
     title: {
         ...style.title,
         color: "#00be67",

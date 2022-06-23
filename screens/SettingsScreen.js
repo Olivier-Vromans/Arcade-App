@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Text, View, useColorScheme } from "react-native";
-import Switch from "expo-dark-mode-switch";
+import React, { useEffect, useState } from "react";
+import { Text, View} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Picker } from "@react-native-picker/picker";
 
@@ -24,18 +23,9 @@ export default function Settings({ navigation, colorScheme, storeTheme }) {
         getTheme()
     }, [])
 
-
-    console.log(colorScheme.pickerTextStyle)
     return (
         <View style={colorScheme.containerStyle}>
             <Text style={colorScheme.titleStyle}>Settings Screen!</Text>
-            {/* <Switch
-                value={themeColor}
-                onChange={(value) => {
-                    setThemeColor(value)
-                    storeTheme(value);
-                }}
-            /> */}
             <Picker
                 style={colorScheme.pickerContainerStyle}
                 selectedValue={themeColor}
