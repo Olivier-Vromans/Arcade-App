@@ -1,7 +1,5 @@
 # Getting started
 
-Go to the [GitBook](https://olivier-vromans.gitbook.io/arcade-app/) of the Arcade App for the best view
-
 ## Welcome !
 
 My application is written in React Native, the app is targeted for people that like Arcade halls and wanne share there experience with other people. This is a projected I did for my programming lessons of Mobile Development.
