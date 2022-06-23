@@ -19,3 +19,12 @@ For the assignment there a couple of requirements that must be met:
 * [x] Local Storage is available offline
 * [x] Current location and location of the hotspots are visible on the map
 * [x] Parameters are sent back and forth between different screens
+
+Extra's
+
+* [] Use of background activities wit notification to show your close to a hotspot
+* [] Use of Biometric security
+* [] App helps you find a location (compas mode)
+* [] Foto's can be saved. Those foto's are on the device and can be showed on the map
+* [] Localstorage can be edited, deleted, and shared
+* [x] No network is fixed in the app

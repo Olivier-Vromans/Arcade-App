@@ -1,62 +1,62 @@
 [
     {
         "name": "Lightning VR Delft",
-        "latitude": 52.00327814152153,
-        "longitude": 4.3935949202396545,
+        "latitude": 51.999468, 
+        "longitude": 4.3901262,
         "website": "http://www.lightningvr.com/"
     },
     {
         "name": "Poing",
-        "latitude": 51.93046117139433,
-        "longitude": 4.475247463744682,
+        "latitude": 51.9254404,
+        "longitude": 4.4766608,
         "website": "https://poing-arcade.nl/"
     },
     {
         "name": "VR4play",
-        "latitude": 51.9645058513294,
-        "longitude": 4.534099878459862,
+        "latitude": 51.9529181,
+        "longitude": 4.5325923,
         "website": "https://www.vr4play.nl/index-nl.aspx"
     },
     {
         "name": "Gamestate de Kuip",
-        "latitude": 51.905700876255814,
-        "longitude": 4.524257312930679,
+        "latitude": 51.8969322,
+        "longitude": 4.5245997,
         "website": "http://www.gamestate.com/"
     },
     {
         "name": "Game Plaza",
-        "latitude": 51.920643713704926,
-        "longitude": 4.34322274453121,
+        "latitude": 51.9099191,
+        "longitude": 4.3398692,
         "website": "http://www.gameplaza.nl/"
     },
     {
         "name": "Sir Winston Fun & Games Schiedam",
-        "latitude": 51.93210210744773,
-        "longitude": 4.402733881827114,
+        "latitude": 51.9241337,
+        "longitude": 4.4061378,
         "website": "http://www.sirwinstonfungames.nl/"
     },
     {
         "name": "Sir Winston Fun & Games Rijswijk",
-        "latitude": 52.05583126219623,
-        "longitude": 4.333969612346158,
+        "latitude": 52.0376517,
+        "longitude": 4.3311209,
         "website": "http://www.sirwinstonfungames.nl/"
     },
     {
         "name": "Gamestate Den Haag",
-        "latitude": 52.08965147050067,
-        "longitude": 4.309333783573141,
+        "latitude": 52.0759499,
+        "longitude": 4.3084413,
         "website": "https://www.gamestate.com/"
     },
     {
         "name": "Hommerson Funland",
-        "latitude": 52.12938445487648,
-        "longitude": 4.280546498607062,
+        "latitude": 52.1146217,
+        "longitude": 4.2833417,
         "website": "https://www.hommerson.nl/"
     },
     {
         "name": "Gamestate Mall of the Netherlands",
-        "latitude": 52.10308432671511,
-        "longitude": 4.374017823016996,
+        "latitude": 52.0883283,
+        "longitude": 4.3831534,
         "website": "http://www.gamestate.com/"
     }
 ]

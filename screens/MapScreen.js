@@ -99,7 +99,8 @@ export default function MapScreen({ navigation, route, colorScheme }) {
                 coordinate={{ latitude: hotspot.latitude, longitude: hotspot.longitude }}
                 title={hotspot.name}
                 description={hotspot.website}
-                image={require("../assets/marker.png")}
+                // Becomes big when publishing somehow
+                // image={require("../assets/marker.png")}
                 onPress={() => navigation.navigate("Notes", {
                     hotspot: hotspot
                 })
