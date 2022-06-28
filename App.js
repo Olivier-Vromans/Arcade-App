@@ -70,7 +70,7 @@ export default function App() {
     colorScheme.navTheme = DefaultTheme
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
-    colorScheme.flatlistItemSyle = light.flatlistItem
+    colorScheme.flatlistItemStyle = light.flatlistItem
     colorScheme.StatusBar = "dark"
   } else if (theme === 'dark') {
     colorScheme.textStyle = dark.text
@@ -82,7 +82,7 @@ export default function App() {
     colorScheme.navTheme = darkMode
     colorScheme.tabBarActive = '#b30000'
     colorScheme.tabBarinActive = '#d3d3d3'
-    colorScheme.flatlistItemSyle = dark.flatlistItem
+    colorScheme.flatlistItemStyle = dark.flatlistItem
     colorScheme.StatusBar = "light"
   } else if (theme === 'arcade') {
     colorScheme.textStyle = arcade.text
@@ -94,7 +94,7 @@ export default function App() {
     colorScheme.navTheme = arcadeMode
     colorScheme.tabBarActive = '#00BE67'
     colorScheme.tabBarinActive = '#00a1d5'
-    colorScheme.flatlistItemSyle = arcade.flatlistItem
+    colorScheme.flatlistItemStyle = arcade.flatlistItem
     colorScheme.StatusBar = "light"
   }
 

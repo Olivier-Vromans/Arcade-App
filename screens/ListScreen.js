@@ -35,7 +35,7 @@ export default function ListScreen({ navigation, colorScheme }) {
                 data={hotspots}
                 renderItem={({ item }) =>
                     <Text
-                        style={[colorScheme.flatlistItemSyle, colorScheme.textStyle]}
+                        style={[colorScheme.flatlistItemStyle, colorScheme.textStyle]}
                         // On press go the map screen and go to the coordinates
                         onPress={() => navigation.navigate("Map", {
                             "latitude": item.latitude,
