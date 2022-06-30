@@ -3258,6 +3258,14 @@
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.1.1.tgz"
   "version" "10.1.1"
 
+"expo-local-authentication@^12.2.0":
+  "integrity" "sha512-JY8aqucTl2SEsC2qnxLD6Dhrxke/Pm10zEMFQVVUO6OsiwqdSO6r/xLE5zzUgLogjOHfKIqGH4rXZLEi8x4Dvw=="
+  "resolved" "https://registry.npmjs.org/expo-local-authentication/-/expo-local-authentication-12.2.0.tgz"
+  "version" "12.2.0"
+  dependencies:
+    "@expo/config-plugins" "^4.0.14"
+    "invariant" "^2.2.4"
+
 "expo-location@~14.2.2":
   "integrity" "sha512-P1v+huBWhuerV4okRhN0+Htx3Nw8LGWTUF66E5iwuZEWvLTYQEQ+Od0j2CvD4FY6rhncNpoIZcWVlIy5NmG4fg=="
   "resolved" "https://registry.npmjs.org/expo-location/-/expo-location-14.2.2.tgz"

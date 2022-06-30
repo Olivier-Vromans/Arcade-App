@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlatList, SafeAreaView, Text } from "react-native";
+import Card from "../components/Card.js";
 
 export default function ListScreen({ navigation, colorScheme }) {
     // State variable for the hotspots
@@ -34,16 +35,10 @@ export default function ListScreen({ navigation, colorScheme }) {
             <FlatList
                 data={hotspots}
                 renderItem={({ item }) =>
-                    <Text
-                        style={[colorScheme.flatlistItemStyle, colorScheme.textStyle]}
-                        // On press go the map screen and go to the coordinates
-                        onPress={() => navigation.navigate("Map", {
-                            "latitude": item.latitude,
-                            "longitude": item.longitude,
-                        })}
-                    >
-                        {item.name}
-                    </Text>
+                    <Card input={item.name} style={[colorScheme.flatlistItemStyle, colorScheme.textStyle]} onPress={() => navigation.navigate("Map", {
+                        "latitude": item.latitude,
+                        "longitude": item.longitude,
+                    })} />
                 }
             />
         </SafeAreaView>

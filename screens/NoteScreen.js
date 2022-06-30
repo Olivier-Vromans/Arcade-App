@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Text, SafeAreaView, TextInput, FlatList, View, TouchableOpacity, Button, KeyboardAvoidingView } from "react-native";
+import { Text, SafeAreaView, TextInput, FlatList, View, TouchableOpacity, Button, KeyboardAvoidingView, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import * as LocalAuthentication from 'expo-local-authentication';
 
 
 export default function NoteScreen({ navigation, route, colorScheme }) {
@@ -11,6 +12,33 @@ export default function NoteScreen({ navigation, route, colorScheme }) {
     const [latitude, setLatitude] = useState(route.params?.hotspot.latitude)
     const [longitude, setLongitude] = useState(route.params?.hotspot.longitude)
     const [notes, setNotes] = useState([])
+
+    const Auth = async () => {
+        try {
+            // Check if device is compatible
+            const isCompatible = await
+                LocalAuthentication.hasHardwareAsync();
+
+            if (!isCompatible) {
+                throw new Error('Your device isn\'t compatible.')
+                navigation.navigate('Map')
+            }
+            // Checking if device has biometrics records
+            // const isEnrolled = await LocalAuthentication.isEnrolledAsync();
+
+            // if (!isEnrolled) {
+            //   throw new Error('No Faces / Fingers found.')
+            //   navigation.navigate('Map')
+            // }
+
+            // Authenticate user
+            await LocalAuthentication.authenticateAsync();
+
+        } catch (error) {
+            navigation.navigate('Map')
+        }
+    }
+
 
     // Get the notes from LocalStorage
     const getNotes = async () => {
@@ -92,6 +120,11 @@ export default function NoteScreen({ navigation, route, colorScheme }) {
     }
 
     useEffect(() => {
+        //if route params exist than auth
+        if (route.params !== undefined) {
+            Auth()
+            getNotes()
+        }
         // Use effect to set the name, latitude, longitude
         setName(route.params?.hotspot.name)
         if (route.params?.hotspot.latitude) {
@@ -102,7 +135,9 @@ export default function NoteScreen({ navigation, route, colorScheme }) {
 
     // Use Effect to get the notes
     useEffect(() => {
-        getNotes()
+        if (route.params === undefined) {
+            navigation.navigate('Map')
+        }
     }, [])
 
     // use Effect to store the notes
